@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>สรุป Discovering Computers 2016 + กฎหมายไอที</title>
+    <style>
+         :root {
+            --bg: #f5f7fb;
+            --card-bg: #ffffff;
+            --accent: #3b82f6;
+            --accent-soft: #dbeafe;
+            --accent-strong: #1d4ed8;
+            --text-main: #111827;
+            --text-muted: #6b7280;
+            --border-soft: #e5e7eb;
+            --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.06);
+            --radius-lg: 18px;
+            --radius-pill: 999px;
+            --spacing: 1.2rem;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top left, #e0f2fe 0, #f5f7fb 35%, #f5f7fb 100%);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 0 0 3rem;
+        }
+        
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1.5rem 1.25rem 3rem;
+        }
+        
+        header {
+            text-align: center;
+            padding: 1.5rem 1rem 1rem;
+        }
+        
+        header h1 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            letter-spacing: 0.03em;
+            color: var(--accent-strong);
+            margin-bottom: 0.25rem;
+        }
+        
+        header p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+        
+        .tagline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.75rem;
+            border-radius: var(--radius-pill);
+            background: rgba(59, 130, 246, 0.08);
+            color: var(--accent-strong);
+            font-size: 0.8rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .tagline span.icon {
+            font-size: 1rem;
+        }
+        /* TOC / Nav */
+        
+        .nav-shell {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(10px);
+            background: linear-gradient(to bottom, rgba(245, 247, 251, 0.96), rgba(245, 247, 251, 0.9));
+            padding: 0.5rem 0 0.8rem;
+            border-bottom: 1px solid rgba(209, 213, 219, 0.7);
+            margin-bottom: 1.1rem;
+        }
+        
+        .toc-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+            padding: 0 0.25rem;
+        }
+        
+        .toc-scroll {
+            display: flex;
+            gap: 0.4rem;
+            overflow-x: auto;
+            padding-bottom: 0.25rem;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .toc-scroll::-webkit-scrollbar {
+            height: 5px;
+        }
+        
+        .toc-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5f5;
+            border-radius: 999px;
+        }
+        
+        .toc-chip {
+            flex: 0 0 auto;
+            font-size: 0.82rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            background: rgba(255, 255, 255, 0.9);
+            color: #1f2937;
+            text-decoration: none;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
+            transition: all 0.15s ease-out;
+        }
+        
+        .toc-chip:hover {
+            border-color: var(--accent);
+            color: var(--accent-strong);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.16);
+        }
+        
+        .toc-chip.main {
+            background: var(--accent-soft);
+            border-color: var(--accent);
+            color: var(--accent-strong);
+            font-weight: 600;
+        }
+        /* Content */
+        
+        main {
+            margin-top: 0.5rem;
+        }
+        
+        section.chapter {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem 1.2rem 1.3rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(209, 213, 219, 0.7);
+        }
+        
+        @media (min-width: 720px) {
+            section.chapter {
+                padding: 1.4rem 1.5rem 1.5rem;
+                margin-bottom: 1.25rem;
+            }
+        }
+        
+        section.chapter:nth-child(odd) {
+            background: linear-gradient(145deg, #ffffff, #f9fbff);
+        }
+        
+        section.chapter:nth-child(even) {
+            background: linear-gradient(145deg, #ffffff, #f5f8ff);
+        }
+        
+        .chapter-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 0.25rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .chapter-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        
+        .chapter-subtitle {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+        }
+        
+        .chip-tag {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.78rem;
+            padding: 0.16rem 0.6rem;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.8);
+            gap: 0.25rem;
+        }
+        
+        .chip-tag .dot {
+            width: 0.4rem;
+            height: 0.4rem;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        
+        .chapter-intro {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.6rem;
+        }
+        
+        h3 {
+            font-size: 0.95rem;
+            margin: 0.7rem 0 0.2rem;
+            font-weight: 700;
+            color: #111827;
+        }
+        
+        ul {
+            padding-left: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        ul li {
+            margin-bottom: 0.18rem;
+            font-size: 0.9rem;
+        }
+        
+        .pill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin: 0.3rem 0 0.4rem;
+        }
+        
+        .pill-list span {
+            font-size: 0.8rem;
+            padding: 0.12rem 0.55rem;
+            border-radius: var(--radius-pill);
+            background: rgba(191, 219, 254, 0.8);
+            color: #1e3a8a;
+        }
+        
+        .subpoint {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            margin-left: 0.8rem;
+            margin-bottom: 0.15rem;
+        }
+        
+        .section-divider {
+            border-top: 1px dashed rgba(148, 163, 184, 0.7);
+            margin: 0.5rem 0 0.6rem;
+        }
+        
+        .back-top {
+            text-align: right;
+            margin-top: 0.35rem;
+        }
+        
+        .back-top a {
+            font-size: 0.8rem;
+            text-decoration: none;
+            color: var(--accent);
+        }
+        
+        .back-top a::before {
+            content: "↑ ";
+        }
+        
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header id="top">
+            <div class="tagline">
+                <span class="icon">📚</span>
+                <span>โน้ตสรุปอ่านง่าย – เวอร์ชันมือถือ</span>
+            </div>
+            <h1>สรุป Discovering Computers 2016 + กฎหมายไอที</h1>
+            <p>สรุปเนื้อหาบทที่ 1–11 และกฎหมายเทคโนโลยีสารสนเทศ แบบสั้น กระชับ อ่านในมือถือได้สบายตา</p>
+        </header>
+
+        <div class="nav-shell">
+            <div class="toc-title">เลือกบทที่ต้องการอ่าน</div>
+            <div class="toc-scroll">
+                <a class="toc-chip main" href="#ch1">บท 1 เทคโนโลยีวันนี้</a>
+                <a class="toc-chip" href="#ch2">บท 2 อินเทอร์เน็ต & เว็บ</a>
+                <a class="toc-chip" href="#ch3">บท 3 คอมฯ & มือถือ</a>
+                <a class="toc-chip" href="#ch4">บท 4 โปรแกรม & แอป</a>
+                <a class="toc-chip" href="#ch5">บท 5 ความปลอดภัยดิจิทัล</a>
+                <a class="toc-chip" href="#ch6">บท 6 ส่วนประกอบเครื่อง</a>
+                <a class="toc-chip" href="#ch7">บท 7 อินพุต/เอาต์พุต</a>
+                <a class="toc-chip" href="#ch8">บท 8 ที่เก็บข้อมูล</a>
+                <a class="toc-chip" href="#ch9">บท 9 ระบบปฏิบัติการ</a>
+                <a class="toc-chip" href="#ch10">บท 10 เครือข่าย & สื่อสาร</a>
+                <a class="toc-chip" href="#ch11">บท 11 ฐานข้อมูล & SDLC</a>
+                <a class="toc-chip" href="#law">กฎหมายไอที</a>
+            </div>
+        </div>
+
+        <main>
+            <!-- Chapter 1 -->
+            <section class="chapter" id="ch1">
+                <div class="chapter-header">
+                    <div>
+                        <div class="chapter-subtitle">Chapter 1</div>
+                        <div class="chapter-title">Introducing Today’s Technologies</div>
+                    </div>
+                    <div class="chip-tag">
+                        <span class="dot"></span> ภาพรวมเทคโนโลยี & ผู้ใช้
+                    </div>
+                </div>
+                <p class="chapter-intro">
+                    บทนี้ปูพื้นว่า “เทคโนโลยีวันนี้คืออะไร ใช้อย่างไร และใครบ้างที่เกี่ยวข้อง” รวมถึงแนวคิด
+                    <strong>Digital Literacy</strong> และประเภทอุปกรณ์ต่าง ๆ
+                </p>
+
+                <h3>1. Digital Literacy</h3>
+                <ul>
+                    <li>หมายถึงความรู้ความเข้าใจด้านดิจิทัลที่ “ทันสมัย” ใช้เทคโนโลยีได้อย่างปลอดภัยและมีประสิทธิภาพ</li>
+                    <li>ต้องเรียนรู้ตลอดเวลา เพราะเทคโนโลยีเปลี่ยนเร็วมาก</li>
+                </ul>
+
+                <h3>2. แนวคิดพื้นฐานคอมพิวเตอร์</h3>
+                <ul>
+                    <li>คอมพิวเตอร์ = อุปกรณ์อิเล็กทรอนิกส์ที่ทำตามชุดคำสั่งในหน่วยความจำ</li>
+                    <li>ทำงานหลัก 4 ขั้น: Input → Processing → Output → Storage</li>
+                </ul>
+
+                <h3>3. ประเภทคอมพิวเตอร์หลัก</h3>
+                <ul>
+                    <li>Laptop / Notebook – พกพาได้ มีจอ+คีย์บอร์ดในตัว</li>
+                    <li>Tablet – จอสัมผัสเป็นหลัก ใช้ปากกา/นิ้ว</li>
+                    <li>Desktop / All-in-One – ใช้ประจำที่บนโต๊ะ</li>
+                    <li>Server – ให้บริการเครื่องอื่นในเครือข่าย เช่น เว็บ ฐานข้อมูล ไฟล์</li>
+                </ul>
+
+                <h3>4. อุปกรณ์พกพา & เกม</h3>
+                <div class="pill-list">
+                    <span>Smartphone</span>
+                    <span>Digital Camera</span>
+                    <span>Media Player</span>
+                    <span>E-book Reader</span>
+                    <span>Wearable</span>
+                    <span>Game Device</span>
+                </div>
+
+                <h3>5. Data vs Information + อุปกรณ์นำเข้า/ส่งออก</h3>
+                <ul>
+                    <li>Data = ข้อเท็จจริงดิบ ๆ เช่น ตัวเลข, รายการ</li>
+                    <li>Information = ข้อมูลที่ผ่านการประมวลผลแล้ว เช่น ใบเสร็จ, รายงาน</li>
+                    <li>อุปกรณ์อินพุต: แป้นพิมพ์ เมาส์ สแกนเนอร์ ไมโครโฟน กล้อง ฯลฯ</li>
+                    <li>อุปกรณ์เอาต์พุต: หน้าจอ เครื่องพิมพ์ ลำโพง หูฟัง ฯลฯ</li>
+                </ul>
+
+                <h3>6. เครือข่าย & การเชื่อมต่อ</h3>
+                <ul>
+                    <li>Network = การเชื่อมต่ออุปกรณ์หลายตัวผ่านสื่อสัญญาณ</li>
+                    <li>Wi-Fi, Bluetooth, เซลลูลาร์ เป็นเทคโนโลยีไร้สายสำคัญ</li>
+                    <li>เครือข่ายบ้าน: แชร์อินเทอร์เน็ต ไฟล์ เกม เครื่องพิมพ์</li>
+                    <li>เครือข่ายธุรกิจ: ช่วยสื่อสารและแชร์ทรัพยากรร่วมกัน</li>
+                </ul>
+
+                <h3>7. การใช้เทคโนโลยีในสังคม</h3>
+                <p class="subpoint">
+                    ใช้ในการศึกษา รัฐบาล การเงิน ค้าปลีก การแพทย์ วิทยาศาสตร์ การท่องเที่ยว สื่อสิ่งพิมพ์ การผลิต ฯลฯ
+                </p>
+
+                <h3>8. ประเภทผู้ใช้เทคโนโลยี</h3>
+                <div class="pill-list">
+                    <span>Home user</span>
+                    <span>SOHO user</span>
+                    <span>Mobile user</span>
+                    <span>Power user</span>
+                    <span>Enterprise user</span>
+                </div>
+
+                <div class="back-top"><a href="#top">กลับขึ้นบน</a></div>
+            </section>
+
+            <!-- Chapter 2 -->
+            <section class="chapter" id="ch2">
+                <div class="chapter-header">
+                    <div>
+                        <div class="chapter-subtitle">Chapter 2</div>
+                        <div class="chapter-title">Connecting and Communicating Online</div>
+                    </div>
+                    <div class="chip-tag">
+                        <span class="dot"></span> อินเทอร์เน็ต & การสื่อสาร
+                    </div>
+                </div>
+                <p class="chapter-intro">
+                    เน้นเรื่องอินเทอร์เน็ต เว็บ การค้นหาข้อมูล การสื่อสารออนไลน์ และมารยาทบนโลกดิจิทัล
+                </p>
+
+                <h3>1. อินเทอร์เน็ตคืออะไร</h3>
+                <ul>
+                    <li>เครือข่ายของเครือข่าย เชื่อมคอมทั่วโลก (business / gov / edu / บุคคล)</li>
+                    <li>เริ่มจาก ARPANET (1969) เพื่อแชร์ทรัพยากรและทนต่อภัยพิบัติ</li>
+                </ul>
+
+                <h3>2. วิธีเชื่อมต่ออินเทอร์เน็ต</h3>
+                <ul>
+                    <li>ใช้สาย: Cable, DSL, Fiber (FTTP)</li>
+                    <li>ไร้สาย: Wi-Fi, Mobile broadband, Fixed wireless, Satellite</li>
+                    <li>Hotspot = จุดกระจาย Wi-Fi สาธารณะ</li>
+                    <li>ISP = ผู้ให้บริการอินเทอร์เน็ต / Bandwidth = ปริมาณข้อมูลที่ส่งได้ในช่วงเวลา</li>
+                </ul>
+
+                <h3>3. IP, Domain Name, DNS</h3>
+                <ul>
+                    <li>IP Address = หมายเลขประจำเครื่องบนอินเทอร์เน็ต</li>
+                    <li>Domain Name = ชื่อที่อ่านง่ายเช่น <code>example.com</code></li>
+                    <li>DNS Server = ตัวแปล Domain → IP</li>
+                </ul>
+
+                <h3>4. Web และ Browser</h3>
+                <ul>
+                    <li>Web = กลุ่มเอกสาร (webpages) บนอินเทอร์เน็ต</li>
+                    <li>Website = เว็บเพจที่เกี่ยวข้องกัน</li>
+                    <li>Web Server = เครื่องที่เก็บและส่งเว็บเพจ</li>
+                    <li>Web 2.0 = เว็บที่ผู้ใช้มีส่วนร่วม เช่น โซเชียล, บล็อก, วิกิ</li>
+                    <li>Browser = โปรแกรมเปิดเว็บ รองรับ Tabbed browsing และ Home page</li>
+                    <li>URL = ที่อยู่เฉพาะของหน้าเว็บ</li>
+                </ul>
+
+                <h3>5. การค้นหาข้อมูลบนเว็บ</h3>
+                <ul>
+                    <li>ใช้ Search Engine → พิมพ์ Keyword หรือวลี</li>
+                    <li>เทคนิค: ใช้คำเฉพาะเจาะจง, ใส่ "..." ครอบวลีสำคัญ, ใช้ AND / OR / NOT</li>
+                </ul>
+
+                <h3>6. ประเภทเว็บไซต์ & มัลติมีเดีย</h3>
+                <p class="subpoint">
+                    มีหลายแบบ เช่น portal, news, information, blog, wiki, social network, e-commerce, entertainment, education เป็นต้น
+                </p>
+                <p class="subpoint">
+                    ใช้ภาพ แอนิเมชัน เสียง วิดีโอ และ VR เสริมประสบการณ์
+                </p>
+
+                <h3>7. บริการสื่อสารออนไลน์</h3>
+                <ul>
+                    <li>Email, Email list</li>
+                    <li>Instant messaging, Chat room</li>
+                    <li>Online discussion (webboard / forum)</li>
+                    <li>VoIP (โทรผ่านอินเทอร์เน็ต)</li>
+                    <li>FTP (transfer files ระหว่างเครื่อง)</li>
+                </ul>
+
+                <h3>8. Netiquette (มารยาทเน็ต)</h3>
+                <ul>
+                    <li>ไม่พิมพ์ตัวใหญ่ล้วน (เหมือนตะโกน)</li>
+                    <li>เคารพความเห็นผู้อื่น ไม่ด่าทอ/กลั่นแกล้ง</li>
+                    <li>ไม่เผยแพร่ข้อมูลส่วนตัวหรือความลับคนอื่น</li>
+                </ul>
+
+                <div class="back-top"><a href="#top">กลับขึ้นบน</a></div>
+            </section>
+
+            <!-- Chapter 3 -->
+            <section class="chapter" id="ch3">
+                <div class="chapter-header">
+                    <div>
+                        <div class="chapter-subtitle">Chapter 3</div>
+                        <div class="chapter-title">Computers and Mobile Devices</div>
+                    </div>
+                    <div class="chip-tag">
+                        <span class="dot"></span> ประเภทอุปกรณ์ & การเชื่อมต่อ
+                    </div>
+                </div>
+                <p class="chapter-intro">
+                    จำแนกประเภทคอมพิวเตอร์ / อุปกรณ์พกพา / เซิร์ฟเวอร์ / เทอร์มินัล / embedded และการป้องกันฮาร์ดแวร์
+                </p>
+
+                <h3>1. กลุ่มอุปกรณ์หลัก</h3>
+                <ul>
+                    <li>Laptops / Tablets / Desktops</li>
+                    <li>Servers / Terminals / Mainframes</li>
+                    <li>Smartphones / Wearables / กล้อง / Media Player / E-book</li>
+                    <li>Game devices</li>
+                    <li>Embedded computers</li>
+                </ul>
+
+                <h3>2. Mobile & Personal Computers</h3>
+                <ul>
+                    <li>Mobile computer = ออกแบบให้พกพา เช่น laptop, tablet</li>
+                    <li>Personal computer = ใช้โดยผู้ใช้คนเดียว (desktop หรือ laptop)</li>
+                    <li>Handheld computer = เครื่องเล็ก ถือมือเดียวได้ ใช้เฉพาะด้าน</li>
+                </ul>
+
+                <h3>3. Servers & Virtualization</h3>
+                <ul>
+                    <li>Server = ให้บริการหลายเครื่อง → ชนิด rack / blade / tower</li>
+                    <li>Virtualization = แบ่งเครื่องเดียวให้ทำงานเหมือนหลายเซิร์ฟเวอร์ (virtual servers)</li>
+                    <li>Mainframe = เซิร์ฟเวอร์ขนาดใหญ่ รองรับผู้ใช้พร้อมกันจำนวนมาก</li>
+                </ul>
+
+                <h3>4. Terminals & Kiosks</h3>
+                <ul>
+                    <li>Thin client = ระบุตัวเอง แต่พึ่งพาเซิร์ฟเวอร์เกือบทั้งหมด</li>
+                    <li>POS terminal = เครื่องคิดเงินร้านค้า เชื่อมฐานข้อมูลสต็อก</li>
+                    <li>ATM, Self-service kiosk = ตู้บริการตนเอง เช่น เช็กอินสนามบิน / ออกบัตรคิว</li>
+                </ul>
+
+                <h3>5. Embedded Computers</h3>
+                <p class="subpoint">
+                    ฝังในอุปกรณ์อื่น ทำหน้าที่เฉพาะ เช่น ในรถยนต์ เครื่องซักผ้า เครื่องมือแพทย์ เครื่องจักรโรงงาน
+                </p>
+
+                <h3>6. Ports & การเชื่อมต่อไร้สาย</h3>
+                <ul>
+                    <li>Port = ช่องต่อบนเครื่อง / Connector = หัวปลั๊ก</li>
+                    <li>USB port = ต่ออุปกรณ์ได้หลายชนิด, ใช้ port replicator / docking station ขยายพอร์ต</li>
+                    <li>ไร้สาย: Bluetooth, Wi-Fi, NFC</li>
+                </ul>
+
+                <h3>7. การป้องกันฮาร์ดแวร์ & พลังงาน</h3>
+                <ul>
+                    <li>ล็อกกายภาพ, ระบบกันขโมย, ซอฟต์แวร์ติดตามอุปกรณ์</li>
+                    <li>ใช้ Surge protector & UPS ป้องกันไฟตก/ไฟกระชาก</li>
+                </ul>
+
+                <h3>8. สุขภาพเมื่อใช้งานคอมพิวเตอร์</h3>
+                <ul>
+                    <li>RSI – บาดเจ็บจากการใช้ซ้ำ ๆ เช่น พิมพ์/ใช้เมาส์</li>
+                    <li>CVS – ปวดตาจากจอ</li>
+                    <li>Ergonomics – การจัดโต๊ะ/เก้าอี้/จอให้พอดีสรีระ</li>
+                    <li>Technology addiction – เสพติดจนรบกวนชีวิตประจำวัน</li>
+                </ul>
+
+                <div class="back-top"><a href="#top">กลับขึ้นบน</a></div>
+            </section>
+
+            <!-- Chapter 4 -->
+            <section class="chapter" id="ch4">
+                <div class="chapter-header">
+                    <div>
+                        <div class="chapter-subtitle">Chapter 4</div>
+                        <div class="chapter-title">Programs and Apps</div>
+                    </div>
+                    <div class="chip-tag">
+                        <span class="dot"></span> ประเภทซอฟต์แวร์ & เครื่องมือ
+                    </div>
+                </div>
+                <p class="chapter-intro">
+                    แยกประเภทโปรแกรม / แอปพลิเคชัน วิธีที่ซอฟต์แวร์ถูกแจกจ่าย และเครื่องมือจัดการระบบ
+                </p>
+
+                <h3>1. นิยามสำคัญ</h3>
+                <ul>
+                    <li>Program / Software = ชุดคำสั่งให้คอมทำงาน</li>
+                    <li>Application (App) = โปรแกรมช่วยงานหรือความบันเทิงของผู้ใช้</li>
+                    <li>Operating System (OS) = ตัวกลางควบคุมกิจกรรมทั้งหมดของเครื่อง</li>
+                </ul>
+
+                <h3>2. รูปแบบการกระจายซอฟต์แวร์</h3>
+                <div class="pill-list">
+                    <span>Retail</span>
+                    <span>Custom</span>
+                    <span>Web app</span>
+                    <span>Mobile app</span>
+                    <span>Shareware</span>
+                    <span>Freeware</span>
+                    <span>Open source</span>
+                    <span>Public domain</span>
+                </div>
+
+                <h3>3. Productivity Apps</h3>
+                <ul>
+                    <li>Word processing – เอกสารตัวอักษร</li>
+                    <li>Presentation – สไลด์นำเสนอ</li>
+                    <li>Spreadsheet – ตาราง + สูตรคำนวณ</li>
+                    <li>Database – ฐานข้อมูล</li>
+                    <li>Note-taking, Calendar, Project management, Accounting/Finance ฯลฯ</li>
+                </ul>
+                <p class="subpoint">
+                    เวิร์กโฟลว์: สร้าง → แก้ไข → จัดรูปแบบ → บันทึก → แชร์/พิมพ์
+                </p>
+
+                <h3>4. Graphics & Multimedia Apps</h3>
+                <ul>
+                    <li>Image editor, Drawing, DTP</li>
+                    <li>Video editor, Audio editor, Media player</li>
+                    <li>เครื่องมือสร้างงานมัลติมีเดีย</li>
+                </ul>
+
+                <h3>5. Personal Interest & Education Apps</h3>
+                <ul>
+                    <li>แอปสุขภาพ/ฟิตเนส, โภชนาการ</li>
+                    <li>แผนที่/นำทาง, แอปท่องเที่ยว</li>
+                    <li>แอปการเรียนรู้ เช่น ภาษาต่างประเทศ, flashcards, พจนานุกรม</li>
+                </ul>
+
+                <h3>6. Communication Software</h3>
+                <p class="subpoint">
+                    เช่น เบราว์เซอร์, Email client, IM, VoIP, FTP, Remote desktop – ใช้สื่อสารและแลกเปลี่ยนข้อมูล
+                </p>
+
+                <h3>7. Security Tools</h3>
+                <ul>
+                    <li>Antivirus / Antispyware</li>
+                    <li>Firewall</li>
+                    <li>Spam filter / Pop-up blocker</li>
+                </ul>
+
+                <h3>8. File, Disk & System Management</h3>
+                <ul>
+                    <li>Disk cleanup / Disk defragmenter / File compression</li>
+                    <li>Screen saver / PC maintenance tools</li>
+                    <li>Backup & Restore utilities</li>
+                </ul>
+
+                <div class="back-top"><a href="#top">กลับขึ้นบน</a></div>
+            </section>
+
+            <!-- Chapter 5 -->
+            <section class="chapter" id="ch5">
+                <div class="chapter-header">
+                    <div>
+                        <div class="chapter-subtitle">Chapter 5</div>
+                        <div class="chapter-title">Digital Security, Ethics, and Privacy</div>
+                    </div>
+                    <div class="chip-tag">
+                        <span class="dot"></span> ความเสี่ยงดิจิทัล & จริยธรรม
+                    </div>
+                </div>
+                <p class="chapter-intro">
+                    ว่าด้วยความเสี่ยงด้านความปลอดภัยดิจิทัล มัลแวร์ จริยธรรมเทคโนโลยี และความเป็นส่วนตัวข้อมูล
+                </p>
+
+                <h3>1. Digital Security Risks & Cybercrime</h3>
+                <ul>
+                    <li>Digital security risk = เหตุที่ทำให้ฮาร์ดแวร์/ซอฟต์แวร์/ข้อมูลเสียหาย</li>
+                    <li>Computer crime = การกระทำผิดโดยใช้คอมพิวเตอร์</li>
+                    <li>Cybercrime = อาชญากรรมบนอินเทอร์เน็ต</li>
+                </ul>
+
+                <h3>2. Malware & Network Attacks</h3>
+                <div class="pill-list">
+                    <span>Virus</span>
+                    <span>Worm</span>
+                    <span>Trojan horse</span>
+                    <span>Rootkit</span>
+                    <span>Spyware</span>
+                    <span>Adware</span>
+                </div>
+                <ul>
+                    <li>Botnet = เครือข่าย zombie machines</li>
+                    <li>DoS / DDoS = ยิงคำขอถล่มจนระบบล่ม</li>
+                    <li>Spoofing = ปลอม IP / Email / เว็บไซต์</li>
+                </ul>
+
+                <h3>3. Unauthorized Access & Use</h3>
+                <ul>
+                    <li>เข้าถึงระบบ/ข้อมูลโดยไม่ได้รับอนุญาต</li>
+                    <li>ใช้งานทรัพยากรเกินสิทธิ์ที่ได้รับ</li>
+                    <li>ใช้ Access control, Audit trail, AUP (policy) ป้องกัน</li>
+                </ul>
+
+                <h3>4. Authentication</h3>
+                <ul>
+                    <li>User name + Password / Passphrase</li>
+                    <li>PIN</li>
+                    <li>Possessed object – บัตร สมาร์ตการ์ด โทเคน</li>
+                    <li>Biometrics – ลายนิ้วมือ ใบหน้า ม่านตา เสียง ลายเซ็น</li>
+                    <li>Two-step verification – ผสมหลายวิธี</li>
+                </ul>
+
+                <h3>5. Backup & Hardware Security</h3>
+                <p class="subpoint">
+                    Backup คือแนวป้องกันสุดท้าย สำรองเก็บในสื่ออื่น/ระบบอื่น ป้องกันการสูญหายจาก Malware, ความเสียหายทางกายภาพ, ขโมย ฯลฯ
+                </p>
+
+                <h3>6. Wireless Security</h3>
+                <ul>
+                    <li>Wi-Fi ไม่เข้ารหัส = เสี่ยงถูกดักข้อมูล/แอบใช้เน็ต</li>
+                    <li>ต้องตั้งรหัสผ่านและใช้การเข้ารหัสที่ปลอดภัย (เช่น WPA2 หรือดีกว่า)</li>
+                </ul>
+
+                <div class="section-divider"></div>
+
+                <h3>7. Ethics & Intellectual Property</h3>
+                <ul>
+                    <li>Technology ethics = ใช้เทคโนโลยีอย่างมีศีลธรรม</li>
+                    <li>Intellectual Property (IP) = สิทธิ์ในผลงานความคิดสร้างสรรค์</li>
+                    <li>Copyright = สิทธิ์ผลงาน เช่น โปรแกรม เพลง หนัง เอกสาร</li>
+                    <li>DRM = เทคโนโลยีควบคุมการใช้/คัดลอกไฟล์ดิจิทัล</li>
+                </ul>
+
+                <h3>8. Green Computing</h3>
+                <p class="subpoint">
+                    ลดการใช้ไฟฟ้า ลดขยะอิเล็กทรอนิกส์ ใช้อุปกรณ์อย่างคุ้มค่า และจัดการรีไซเคิล
+                </p>
+
+                <h3>9. Information Privacy</h3>
+                <ul>
+                    <li>Information privacy = สิทธิ์ควบคุมการเก็บ/ใช้/เผยข้อมูลส่วนตัว</li>
+                    <li>Cookies = ไฟล์เล็ก ๆ ที่เว็บเก็บในเครื่อง ใช้จำค่า/ติดตามการใช้งาน</li>
+                    <li>Spyware / Adware / Social engineering = ความเสี่ยงต่อความเป็นส่วนตัว</li>
+                    <li>หลายองค์กร monitor การใช้งานคอมพิวเตอร์พนักงานอย่างถูกกฎหมาย</li>
+                </ul>
+
+                <div class="back-top"><a href="#top">กลับขึ้นบน</a></div>
+            </section>
+
+            <!-- Chapter 6 -->
+            <section class="chapter" id="ch6">
+                <div class="chapter-header">
+                    <div>
+                        <div class="chapter-subtitle">Chapter 6</div>
+                        <div class="chapter-title">Computing Components</div>
+                    </div>
+                    <div class="chip-tag">
+                        <span class="dot"></span> ภายในเคส & CPU & Bus
+                    </div>
+                </div>
+                <p class="chapter-intro">
+                    เจาะดูส่วนประกอบภายในเคส ตั้งแต่เมนบอร์ด หน่วยประมวลผล การแทนข้อมูล หน่วยความจำ บัส และแหล่งจ่ายไฟ
+                </p>
+
+                <h3>1. ภายในเคส</h3>
+                <ul>
+                    <li>เคสป้องกันวงจรอิเล็กทรอนิกส์ภายใน</li>
+                    <li>Motherboard, Processor, Memory, Expansion cards, Storage drives, Power supply, พัดลม</li>
+                </ul>
+
+                <h3>2. Processor (CPU)</h3>
+                <ul>
+                    <li>Multi-core = หลายแกนประมวลผลในชิปเดียว</li>
+                    <li>Control Unit = ควบคุมการทำงานส่วนอื่น</li>
+                    <li>ALU = คำนวณ & เปรียบเทียบ</li>
+                    <li>Machine cycle = Fetch → Decode → Execute → Store</li>
+                    <li>Registers = หน่วยความจำความเร็วสูงใกล้ CPU</li>
+                    <li>System clock = จังหวะการทำงาน วัดเป็น GHz</li>
+                </ul>
+
+                <h3>3. การระบายความร้อน</h3>
+                <ul>
+                    <li>Heat sink / พัดลม</li>
+                    <li>Liquid cooling</li>
+                    <li>Cooling pad สำหรับโน้ตบุ๊ก</li>
+                </ul>
+
+                <h3>4. Cloud Computing (มุมมองฮาร์ดแวร์)</h3>
+                <p class="subpoint">
+                    ผู้ใช้ใช้ทรัพยากรคอมพิวเตอร์ผ่านอินเทอร์เน็ต → ประหยัดค่าใช้จ่าย ประหยัดพื้นที่ ขยายระบบได้ง่าย (scalability)
+                </p>
+
+                <h3>5. Data Representation</h3>
+                <ul>
+                    <li>สัญญาณ Analog = ต่อเนื่อง</li>
+                    <li>Digital = 0/1</li>
+                    <li>Bit = หน่วยข้อมูลเล็กสุด / Byte = 8 bits → 1 ตัวอักษร</li>
+                </ul>
+
+                <h3>6. Buses</h3>
+                <ul>
+                    <li>Bus = เส้นทางสัญญาณบนเมนบอร์ด</li>
+                    <li>Word size = จำนวนบิตที่ CPU ประมวลผลได้ในครั้งเดียว</li>
+                    <li>มี System bus / Backside bus / Expansion bus</li>
+                </ul>
+
+                <h3>7. Power Supply & Battery</h3>
+                <ul>
+                    <li>Power supply / AC adapter = แปลงไฟบ้านเป็น DC</li>
+                    <li>Battery (เช่น Li-ion) สำหรับอุปกรณ์พกพา</li>
+                </ul>
+
+                <h3>8. การดูแลรักษา</h3>
+                <p class="subpoint">
+                    เลี่ยงความร้อนสูง/เย็นจัด ไม่ให้โดนน้ำ/ฝุ่นแรง ๆ ใช้กระเป๋ากันกระแทก และอัปเดตซอฟต์แวร์/เฟิร์มแวร์
+                </p>
+
+                <div class="back-top"><a href="#top">กลับขึ้นบน</a></div>
+            </section>
+
+            <!-- Chapter 7 -->
+            <section class="chapter" id="ch7">
+                <div class="chapter-header">
+                    <div>
+                        <div class="chapter-subtitle">Chapter 7</div>
+                        <div class="chapter-title">Input and Output</div>
+                    </div>
+                    <div class="chip-tag">
+                        <span class="dot"></span> อินพุต/เอาต์พุต & Assistive
+                    </div>
+                </div>
+                <p class="chapter-intro">
+                    รวมทุกอย่างที่เกี่ยวข้องกับการ “ป้อนข้อมูลเข้า” และ “แสดงผลออก” จากคอมพิวเตอร์
+                </p>
+
+                <h3>1. ความหมาย</h3>
+                <ul>
+                    <li>Input = ข้อมูล/คำสั่งที่ป้อนเข้าไป</li>
+                    <li>Output = ผลลัพธ์ที่เครื่องแสดงออกมา (ตัวอักษร ภาพ เสียง สิ่งพิมพ์ ฯลฯ)</li>
+                </ul>
+
+                <h3>2. อุปกรณ์ป้อนข้อมูล</h3>
+                <ul>
+                    <li>Keyboards – หลายแบบ: ปกติ, ขนาดเล็ก, On-screen, Ergonimic, Gaming, Wireless</li>
+                    <li>Pointing devices – Mouse, Touchpad, Trackball</li>
+                    <li>Touch screen – ใช้ท่าทางแตะ ปัด ย่อขยาย หมุน</li>
+                    <li>Pen input – Stylus, Digital pen, Graphics tablet</li>
+                    <li>Motion / Gesture input – เซนเซอร์ตรวจการเคลื่อนไหวในเกม/อุปกรณ์</li>
+                    <li>Voice & Audio input – ไมค์, โปรแกรมรู้จำเสียง (speech recognition)</li>
+                    <li>Video input – กล้องดิจิทัล, Webcam, วิดีโอคอล</li>
+                    <li>Scanners – OCR, barcode reader, QR reader, check reader ฯลฯ</li>
+                </ul>
+
+                <h3>3. อุปกรณ์แสดงผล</h3>
+                <ul>
+                    <li>Displays – LCD/LED/OLED, ค่า resolution, brightness, contrast, response time</li>
+                    <li>Printers – Impact / Nonimpact (Inkjet, Laser, Photo, All-in-one, Thermal, Mobile, Label, 3D)</li>
+                    <li>Audio output – Speakers, Headphones, Earbuds</li>
+                    <li>อื่น ๆ – Data projector, Interactive whiteboard, Game controllers แบบมี feedback</li>
+                </ul>
+
+                <h3>4. Assistive Technology</h3>
+                <p class="subpoint">
+                    เทคโนโลยีช่วยเหลือผู้พิการในการใช้คอมพิวเตอร์ เช่น แป้นพิมพ์เฉพาะทาง, Braille printer, อุปกรณ์ควบคุมด้วยศีรษะ/สายตา ฯลฯ
+                </p>
+
+                <div class="back-top"><a href="#top">กลับขึ้นบน</a></div>
+            </section>
+
+            <!-- Chapter 8 -->
+            <section class="chapter" id="ch8">
+                <div class="chapter-header">
+                    <div>
+                        <div class="chapter-subtitle">Chapter 8</div>
+                        <div class="chapter-title">Digital Storage</div>
+                    </div>
+                    <div class="chip-tag">
+                        <span class="dot"></span> Storage Media & RAID & Cloud
+                    </div>
+                </div>
+                <p class="chapter-intro">
+                    พูดถึง “ที่เก็บข้อมูล” ทั้งภายในและภายนอก ตั้งแต่ฮาร์ดดิสก์ แฟลชไดรฟ์ เทป จนถึง Cloud storage
+                </p>
+
+                <h3>1. Storage vs Memory</h3>
+                <ul>
+                    <li>Storage = เก็บข้อมูลถาวร (ไม่หายเมื่อปิดเครื่อง)</li>
+                    <li>Memory (RAM) = ใช้ชั่วคราว (หายเมื่อปิดเครื่อง)</li>
+                    <li>Reading = ดึงจาก storage เข้า memory / Writing = จาก memory ลง storage</li>
+                </ul>
+
+                <h3>2. หน่วยวัด & Access Time</h3>
+                <ul>
+                    <li>KB, MB, GB, TB, PB, EB, ZB, YB – ความจุเพิ่มเป็นหลักพัน</li>
+                    <li>Access time = เวลาที่ใช้ในการค้นหา/ดึงข้อมูล → ยิ่งน้อยยิ่งดี</li>
+                </ul>
+
+                <h3>3. Hard Disks & SSD</h3>
+                <ul>
+                    <li>HDD – จานแม่เหล็ก หมุนเร็ว แบ่งเป็น tracks/sectors/cylinders, ต้อง format ก่อนใช้</li>
+                    <li>ปัญหา: head crash → ข้อมูลเสียหายมาก</li>
+                    <li>SSD – ไม่มีชิ้นส่วนหมุน เร็ว เงียบ ทน แต่ราคา/GB แพงกว่า</li>
+                </ul>
+
+                <h3>4. External Storage & RAID</h3>
+                <ul>
+                    <li>External HDD – ต่อผ่าน USB ใช้สำรองหรือพกไฟล์</li>
+                    <li>RAID – ใช้ฮาร์ดดิสก์หลายลูกร่วมกันเพื่อเพิ่มความเชื่อถือและ/หรือความเร็ว</li>
+                </ul>
+
+                <h3>5. Flash Storage & Memory Cards</h3>
+                <ul>
+                    <li>Memory card – SD/mini/micro, ใช้ในกล้อง/มือถือ</li>
+                    <li>USB Flash drive – สะดวก พกง่าย ต่อผ่าน USB port</li>
+                </ul>
+
+                <h3>6. Optical Discs</h3>
+                <ul>
+                    <li>CD / DVD / Blu-ray – ใช้แสงเลเซอร์อ่าน/เขียน</li>
+                    <li>แบ่งเป็น Read-only / Recordable (-R) / Rewritable (-RW)</li>
+                </ul>
+
+                <h3>7. Cloud Storage</h3>
+                <p class="subpoint">
+                    เก็บไฟล์บนเซิร์ฟเวอร์ของผู้ให้บริการ เข้าถึงผ่านอินเทอร์เน็ต เหมาะสำหรับ backup / sync / แชร์ไฟล์ร่วมกัน
+                </p>
+
+                <h3>8. Enterprise Storage</h3>
+                <ul>
+                    <li>ระบบ RAID ขนาดใหญ่</li>
+                    <li>NAS (Network Attached Storage)</li>
+                    <li>SAN (Storage Area Network)</li>
+                    <li>Tape – สำหรับ backup ปริมาณมากราคาต่อ GB ต่ำ</li>
+                </ul>
+
+                <h3>9. สื่อเก็บข้อมูลอื่น ๆ</h3>
+                <ul>
+                    <li>Magnetic stripe card</li>
+                    <li>Smart card</li>
+                    <li>RFID tag</li>
+                    <li>NFC tag/chip</li>
+                </ul>
+
+                <div class="back-top"><a href="#top">กลับขึ้นบน</a></div>
+            </section>
+
+            <!-- Chapter 9 -->
+            <section class="chapter" id="ch9">
+                <div class="chapter-header">
+                    <div>
+                        <div class="chapter-subtitle">Chapter 9</div>
+                        <div class="chapter-title">Operating Systems</div>
+                    </div>
+                    <div class="chip-tag">
+                        <span class="dot"></span> OS Functions & Types
+                    </div>
+                </div>
+                <p class="chapter-intro">
+                    ระบบปฏิบัติการคือ “หัวใจซอฟต์แวร์” ของเครื่อง ควบคุมฮาร์ดแวร์และแอปทั้งหมด
+                </p>
+
+                <h3>1. หน้าที่หลักของ OS</h3>
+                <ul>
+                    <li>Start-up / Shut down / Sleep / Hibernate</li>
+                    <li>User Interface (GUI / Command-line)</li>
+                    <li>Program & Memory Management (multitasking, virtual memory)</li>
+                    <li>Scheduling & Spooling (งานพิมพ์ ฯลฯ)</li>
+                    <li>Device & Driver Management (Plug and Play)</li>
+                    <li>File & Disk Management</li>
+                    <li>Monitoring performance / Security</li>
+                </ul>
+
+                <h3>2. User Interface</h3>
+                <ul>
+                    <li>GUI – เมนู ไอคอน หน้าต่าง</li>
+                    <li>Command-line – พิมพ์คำสั่งตรง</li>
+                </ul>
+
+                <h3>3. การจัดการโปรแกรม</h3>
+                <ul>
+                    <li>Single-tasking vs Multitasking</li>
+                    <li>Foreground vs Background</li>
+                    <li>Single-user vs Multiuser</li>
+                </ul>
+
+                <h3>4. การจัดการหน่วยความจำ</h3>
+                <p class="subpoint">
+                    OS จัดสรร RAM ให้แต่ละโปรแกรม และใช้ Virtual memory ช่วยเมื่อ RAM ไม่พอ
+                </p>
+
+                <h3>5. ประเภทระบบปฏิบัติการ</h3>
+                <ul>
+                    <li>Desktop OS – Windows, macOS, Linux, UNIX</li>
+                    <li>Server OS – Windows Server, Linux server, UNIX, mainframe OS</li>
+                    <li>Mobile OS – Android, iOS, (Windows Phone ในบางยุค)</li>
+                </ul>
+
+                <div class="back-top"><a href="#top">กลับขึ้นบน</a></div>
+            </section>
+
+            <!-- Chapter 10 -->
+            <section class="chapter" id="ch10">
+                <div class="chapter-header">
+                    <div>
+                        <div class="chapter-subtitle">Chapter 10</div>
+                        <div class="chapter-title">Communicating Digital Content</div>
+                    </div>
+                    <div class="chip-tag">
+                        <span class="dot"></span> Network & Media & Protocols
+                    </div>
+                </div>
+                <p class="chapter-intro">
+                    บทนี้เน้นด้านการส่งข้อมูลดิจิทัลผ่านเครือข่าย ประเภทเครือข่าย มาตรฐาน และสื่อส่งสัญญาณ
+                </p>
+
+                <h3>1. ระบบสื่อสารดิจิทัล</h3>
+                <ul>
+                    <li>มี 3 ส่วนหลัก: อุปกรณ์ส่ง → สื่อกลาง → อุปกรณ์รับ</li>
+                    <li>ประโยชน์: ติดต่อสื่อสาร, แชร์ฮาร์ดแวร์, แชร์ไฟล์/ซอฟต์แวร์, โอนเงิน ฯลฯ</li>
+                </ul>
+
+                <h3>2. ประเภทเครือข่ายตามพื้นที่</h3>
+                <div class="pill-list">
+                    <span>PAN</span>
+                    <span>LAN</span>
+                    <span>WLAN</span>
+                    <span>MAN</span>
+                    <span>WAN</span>
+                </div>
+
+                <h3>3. Network Architecture</h3>
+                <ul>
+                    <li>Client/Server – มีเซิร์ฟเวอร์กลางให้บริการ</li>
+                    <li>Peer-to-Peer – เครื่องเท่าเทียม แชร์กันเองโดยตรง</li>
+                </ul>
+
+                <h3>4. Protocol & Standards</h3>
+                <ul>
+                    <li>Ethernet – มาตรฐาน LAN</li>
+                    <li>TCP/IP – โปรโตคอลหลักของอินเทอร์เน็ต</li>
+                    <li>Wi-Fi, Bluetooth, UWB, IrDA, RFID, NFC, LTE</li>
+                </ul>
+
+                <h3>5. สายสื่อสาร & อุปกรณ์โครงข่าย</h3>
+                <ul>
+                    <li>สาย: Twisted-pair, Coaxial, Fiber-optic</li>
+                    <li>อุปกรณ์: Modem, Router, Switch, Hub, Access point, Network adapter</li>
+                </ul>
+
+                <h3>6. สื่อไร้สาย & ดาวเทียม</h3>
+                <ul>
+                    <li>คลื่นวิทยุ, ไมโครเวฟ, อินฟราเรด</li>
+                    <li>Satellite = ใช้ส่งสัญญาณครอบคลุมพื้นที่กว้าง</li>
+                    <li>GPS = ระบบระบุตำแหน่งด้วยดาวเทียม</li>
+                </ul>
+
+                <h3>7. เครือข่ายในบ้าน</h3>
+                <p class="subpoint">
+                    เลือกใช้แบบใช้สาย/ไร้สายหรือผสม ตั้งค่าเราเตอร์ กำหนดรหัส Wi-Fi และเข้ารหัสเพื่อความปลอดภัย แชร์อินเทอร์เน็ต ไฟล์ และเครื่องพิมพ์
+                </p>
+
+                <div class="back-top"><a href="#top">กลับขึ้นบน</a></div>
+            </section>
+
+            <!-- Chapter 11 -->
+            <section class="chapter" id="ch11">
+                <div class="chapter-header">
+                    <div>
+                        <div class="chapter-subtitle">Chapter 11</div>
+                        <div class="chapter-title">Building Solutions</div>
+                    </div>
+                    <div class="chip-tag">
+                        <span class="dot"></span> Database & DBMS & SDLC
+                    </div>
+                </div>
+                <p class="chapter-intro">
+                    แบ่งออกเป็น 3 ส่วนใหญ่: ข้อมูล/ฐานข้อมูล ระบบจัดการฐานข้อมูล และการพัฒนาระบบ (SDLC) + ภาษาโปรแกรม
+                </p>
+
+                <h3>ส่วนที่ 1: ข้อมูล & ฐานข้อมูล</h3>
+                <h3>1. ลำดับชั้นของข้อมูล</h3>
+                <ul>
+                    <li>Character → Field → Record → Data file → Database</li>
+                    <li>Record = ข้อมูลของ “หนึ่งหน่วย” เช่น นักศึกษา 1 คน, ลูกค้า 1 ราย</li>
+                </ul>
+
+                <h3>2. Validation (ตรวจสอบข้อมูล)</h3>
+                <ul>
+                    <li>Alphabetic / Numeric</li>
+                    <li>Range / Consistency / Completeness</li>
+                    <li>Check digit – ตัวเลขตรวจสอบท้ายรหัส</li>
+                </ul>
+
+                <h3>3. File Processing vs Database Approach</h3>
+                <ul>
+                    <li>File processing – แต่ละแผนกเก็บไฟล์แยก ข้อมูลซ้ำเยอะ แก้ไขยาก</li>
+                    <li>Database approach – ใช้ฐานข้อมูลร่วมกัน ลดความซ้ำ เพิ่มความสอดคล้อง</li>
+                </ul>
+
+                <h3>4. ประเภทฐานข้อมูล</h3>
+                <ul>
+                    <li>Relational</li>
+                    <li>Object-Oriented (OODB)</li>
+                    <li>Multidimensional</li>
+                    <li>แนวคิด Big Data – ข้อมูลจำนวนมาก หลากหลาย มาเร็ว</li>
+                </ul>
+
+                <div class="section-divider"></div>
+
+                <h3>ส่วนที่ 2: DBMS (Database Management System)</h3>
+                <h3>1. Data Dictionary</h3>
+                <p class="subpoint">
+                    เก็บข้อมูลเกี่ยวกับโครงสร้างฐานข้อมูล เช่น ชื่อฟิลด์ ประเภทข้อมูล ความยาว ข้อจำกัดต่าง ๆ
+                </p>
+
+                <h3>2. เครื่องมือหลักใน DBMS</h3>
+                <ul>
+                    <li>Query & Query Language (SQL)</li>
+                    <li>QBE (Query by Example)</li>
+                    <li>Form (กรอก/แก้ไขข้อมูล)</li>
+                    <li>Report generator (สร้างรายงาน)</li>
+                </ul>
+
+                <h3>3. Security & Backup</h3>
+                <ul>
+                    <li>Access privileges & Least-privilege policy</li>
+                    <li>Backup / Log / Recovery utility / Continuous backup</li>
+                </ul>
+
+                <div class="section-divider"></div>
+
+                <h3>ส่วนที่ 3: การพัฒนาระบบ (SDLC) & ภาษาโปรแกรม</h3>
+                <h3>1. Information System & SDLC</h3>
+                <ul>
+                    <li>Information system = Hardware + Software + Data + People + Procedures</li>
+                    <li>SDLC = ลำดับขั้นตอนพัฒนาระบบสารสนเทศ</li>
+                </ul>
+
+                <h3>2. ขั้นตอน SDLC</h3>
+                <ul>
+                    <li><strong>Planning</strong> – รับคำขอโครงการ, วิเคราะห์ความสำคัญ, ตั้งทีม</li>
+                    <li><strong>Analysis</strong> – ศึกษาปัญหา, รวบรวมความต้องการ, วิเคราะห์ระบบเดิม</li>
+                    <li><strong>Design</strong> – ออกแบบฐานข้อมูล, จออินพุต/เอาต์พุต, กระบวนการ, UI, เตรียมฮาร์ดแวร์/ซอฟต์แวร์, สร้าง Prototype</li>
+                    <li><strong>Implementation</strong> – เขียนโปรแกรม, ทดสอบ (Unit/System/Integration/Acceptance), ฝึกอบรม, แปลงระบบ</li>
+                    <li><strong>Operation & Support</strong> – ดูแล บำรุงรักษา ปรับปรุง และตรวจด้านความปลอดภัย</li>
+                </ul>
+
+                <h3>3. ภาษาโปรแกรม & Web Development</h3>
+                <ul>
+                    <li>Procedural languages – C, COBOL, BASIC, ฯลฯ</li>
+                    <li>OOP – C++, Java, C#, ฯลฯ</li>
+                    <li>4GL, Application generator, Macro</li>
+                    <li>Web: HTML, XML/WML, JavaScript, PHP, Perl, Python, Ruby ฯลฯ</li>
+                </ul>
+
+                <div class="back-top"><a href="#top">กลับขึ้นบน</a></div>
+            </section>
+
+            <!-- IT Law -->
+            <section class="chapter" id="law">
+                <div class="chapter-header">
+                    <div>
+                        <div class="chapter-subtitle">IT Law</div>
+                        <div class="chapter-title">กฎหมายเทคโนโลยีสารสนเทศ</div>
+                    </div>
+                    <div class="chip-tag">
+                        <span class="dot"></span> ธุรกรรมออนไลน์ & ลิขสิทธิ์ & คอมพิวเตอร์
+                    </div>
+                </div>
+                <p class="chapter-intro">
+                    สรุปภาพรวมกฎหมายที่เกี่ยวข้องกับการใช้เทคโนโลยีในไทย: ธุรกรรมอิเล็กทรอนิกส์ ลิขสิทธิ์/ทรัพย์สินทางปัญญา และ พ.ร.บ.คอมพิวเตอร์
+                </p>
+
+                <h3>1. กฎหมายธุรกรรมอิเล็กทรอนิกส์</h3>
+                <ul>
+                    <li>รับรองข้อมูลอิเล็กทรอนิกส์ให้มีผลทางกฎหมายเทียบเท่า “เอกสารกระดาษ”</li>
+                    <li>รับรองลายมือชื่ออิเล็กทรอนิกส์และตราประทับอิเล็กทรอนิกส์</li>
+                    <li>เอื้อต่อ e-commerce, e-banking, e-government ฯลฯ</li>
+                </ul>
+
+                <h3>2. ลิขสิทธิ์ & ทรัพย์สินทางปัญญา</h3>
+                <ul>
+                    <li>ลิขสิทธิ์คุ้มครอง “รูปแบบการแสดงออก” ของงาน (ไม่ใช่ไอเดีย)</li>
+                    <li>ได้สิทธิ์ทันทีที่สร้างงาน ไม่ต้องจดทะเบียน</li>
+                    <li>ตัวอย่าง: โปรแกรม, รูปภาพ, เพลง, หนัง, e-book, งานเขียน ฯลฯ</li>
+                    <li>สิ่งที่ไม่มีลิขสิทธิ์ เช่น กฎหมาย คำสั่ง/ประกาศของรัฐ ข่าวทั่วไป</li>
+                    <li>สิทธิบัตร = คุ้มครองการประดิษฐ์/ออกแบบผลิตภัณฑ์ ต้องจดทะเบียน</li>
+                </ul>
+
+                <h3>3. การละเมิดลิขสิทธิ์ & ข้อยกเว้น</h3>
+                <ul>
+                    <li>ละเมิด = ทำซ้ำ/ดัดแปลง/เผยแพร่/ให้เช่า ฯลฯ โดยไม่ได้รับอนุญาต</li>
+                    <li>ข้อยกเว้น (fair use แบบไทย) เช่น ใช้เพื่อการศึกษา วิจัย วิจารณ์ รายงานข่าว การสอนที่ไม่หวังผลกำไร และใช้ในคดีความ</li>
+                </ul>
+
+                <h3>4. กฎหมายว่าด้วยการกระทำความผิดเกี่ยวกับคอมพิวเตอร์ (ย่อ)</h3>
+                <ul>
+                    <li>เข้าถึงระบบ/ข้อมูลของผู้อื่นโดยไม่ได้รับอนุญาต</li>
+                    <li>ดักรับข้อมูลระหว่างส่ง (sniffing/การดักฟังในเครือข่าย)</li>
+                    <li>แก้ไข ทำลาย เพิ่ม เติมข้อมูลให้เสียหาย หรือทำให้ระบบล่ม</li>
+                    <li>จำหน่าย/เผยแพร่เครื่องมือหรือโปรแกรมที่ใช้ในการกระทำผิด</li>
+                    <li>นำเข้า/เผยแพร่ข้อมูลเท็จที่ก่อความเสียหาย กระทบความมั่นคง หรือผิดศีลธรรมร้ายแรง</li>
+                    <li>เผยแพร่ภาพตัดต่อหรือภาพผู้อื่นให้เสียชื่อเสียง</li>
+                    <li>ผู้ให้บริการต้องเก็บ log ตามที่กฎหมายกำหนด และมีหน้าที่ช่วยเหลือเจ้าหน้าที่</li>
+                </ul>
+
+                <h3>5. แนวทางใช้งานเทคโนโลยีอย่างปลอดภัย & ถูกกฎหมาย</h3>
+                <ul>
+                    <li>ใช้ซอฟต์แวร์/สื่ออย่างถูกลิขสิทธิ์ ไม่โหลดเถื่อน แคร็ก โปรแกรมหรือเกม</li>
+                    <li>ระวังการแชร์ไฟล์ เพลง หนัง โปรแกรม ต่อสาธารณะ</li>
+                    <li>ไม่ตัดต่อรูป/คลิปผู้อื่นในทางเสียหายแล้วนำไปเผยแพร่</li>
+                    <li>ไม่แฮ็กหรือเดารหัสผ่านผู้อื่น ไม่ใช้บัญชีคนอื่นโดยไม่ได้รับอนุญาต</li>
+                </ul>
+
+                <div class="back-top"><a href="#top">กลับขึ้นบน</a></div>
+            </section>
+        </main>
+
+        <footer>
+            สรุปนี้จัดเพื่อช่วยทบทวนเนื้อหาเร็ว ๆ ก่อนสอบ / ก่อนทำงานจริง
+        </footer>
+    </div>
+</body>
+
+</html>
